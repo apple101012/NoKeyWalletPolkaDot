@@ -213,4 +213,4 @@ Hackathon mentors and organizers for feedback and guidance.
 Project: NoKey Wallet
 Built with: React, Tailwind, Framer Motion, Polkadot.js
 Tagline: “Making Web3 onboarding invisible, yet powerful.”
-- **Video**: [Demo Video URL]
+
