@@ -1,13 +1,3 @@
-# 🪪 NoKey Wallet - Your keys, simplified
-
-> **Tagline**: Create a Web3 wallet without seed phrases  
-> **Theme**: Polkadot Tinkerers | Web2 → Web3 UX Innovation
-
-## 🎯 Project Overview
-
-NoKey Wallet is a proof-of-concept Polkadot wallet that eliminates seed phrases and uses Web2-style authentication patterns to make Web3 onboarding as easy as logging into Gmail.
-
-Built for the **Polkadot Hackathon**, this demo showcases how account abstraction and device-bound encryption can create a seamless, recoverable wallet experience that feels like Web2 but runs on Web3.
 
 # 🪪 NoKey Wallet - Your Keys, Simplified
 
