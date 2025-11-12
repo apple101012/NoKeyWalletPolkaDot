@@ -1,0 +1,120 @@
+---
+applyTo: '**'
+---
+
+User instruction (keep this at the top):
+
+The file `changelog.txt` is a persistent project log and living documentation. Always update this file whenever you (the assistant) make changes to the project codebase, database schema, routes, or architecture. Include a short summary of what changed, why, files edited, and any steps needed to verify the change. Keep entries chronological with timestamps. Always keep this header at the top.
+
+---
+
+## PROJECT SNAPSHOT (Initial Seed)
+
+**Project**: NoKey Wallet
+**Repository**: PolkaDotHackathon
+**Purpose**: A Polkadot-powered proof-of-concept wallet that eliminates seed phrases using Web2-style authentication patterns, device-bound encryption, and social recovery.
+
+**Stack**:
+- Frontend: React 18.3.1 + Vite 5.4.11
+- Styling: Tailwind CSS 3.4.15
+- Animations: Framer Motion 11.11.17
+- Crypto: @polkadot/util-crypto 13.2.3, crypto-js 4.2.0
+- Icons: Lucide React 0.460.0
+- Build: Vite with React plugin
+
+**Architecture**:
+- User Interface (React + Tailwind + Framer Motion)
+  - Authentication Layer (Mock biometric, email verification, social recovery)
+  - Key Management Simulation (Polkadot address gen, AES encryption, localStorage)
+  - Mock Blockchain Layer (Simulated transactions, DOT balance, parachain connections)
+  - UI Components (Landing, Dashboard, Modals)
+
+**Key Features**:
+1. No seed phrases - users never see private keys
+2. Device-bound security simulation
+3. Social recovery with trusted contacts
+4. Email recovery flow
+5. Parachain connections (Acala, Moonbeam, Astar, Parallel)
+6. Transaction management (send/receive)
+7. Modern Apple-style UI
+
+**Directory Structure**:
+```
+PolkaDotHackathon/
+├── index.html
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+├── postcss.config.js
+├── README.md
+├── .gitignore
+├── src/
+│   ├── main.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   ├── components/
+│   │   ├── LandingPage.jsx
+│   │   ├── AuthenticationModal.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── ParachainCard.jsx
+│   │   ├── SendModal.jsx
+│   │   └── RecoveryModal.jsx
+│   └── utils/
+│       ├── wallet.js
+│       └── parachains.js
+├── changelog.txt (this file)
+└── current.txt
+```
+
+---
+
+## CHANGE LOG
+
+### 2025-11-11 (assistant) — Initial Project Setup
+
+**What changed**:
+- Created complete NoKey Wallet project structure from scratch
+- Set up React + Vite + Tailwind CSS build configuration
+- Implemented all core components and utilities
+- Added Polkadot crypto library integration
+- Created comprehensive README with deployment instructions
+
+**Why**:
+- User requested creation of NoKey Wallet project based on PRD
+- Needed full proof-of-concept implementation for Polkadot hackathon
+- Required working demo with all features outlined in PRD
+
+**Files added/edited**:
+- `/package.json` - Project dependencies and scripts
+- `/vite.config.js` - Vite build configuration
+- `/tailwind.config.js` - Tailwind CSS theming and colors
+- `/postcss.config.js` - PostCSS plugins
+- `/index.html` - HTML entry point
+- `/src/main.jsx` - React entry point
+- `/src/App.jsx` - Main application component with routing logic
+- `/src/index.css` - Global styles and Tailwind directives
+- `/src/components/LandingPage.jsx` - Landing page with hero and features
+- `/src/components/AuthenticationModal.jsx` - Face ID/Email auth flow
+- `/src/components/Dashboard.jsx` - Main wallet dashboard
+- `/src/components/ParachainCard.jsx` - Parachain connection UI
+- `/src/components/SendModal.jsx` - Transaction sending flow
+- `/src/components/RecoveryModal.jsx` - Wallet recovery options
+- `/src/utils/wallet.js` - Wallet generation, encryption, storage
+- `/src/utils/parachains.js` - Parachain mock data and connections
+- `/README.md` - Comprehensive documentation
+- `/.gitignore` - Git ignore rules
+- `/changelog.txt` - This file
+- `/current.txt` - Current state snapshot
+
+**How to verify**:
+1. Run `npm install` to install dependencies
+2. Run `npm run dev` to start development server
+3. Open browser to http://localhost:5173
+4. Click "Create Account" and go through auth flow
+5. Verify wallet creation, dashboard display, transaction sending
+6. Test parachain connections and recovery flows
+
+**Notes / Next**:
+- Project is fully functional as a demo/prototype
+- Ready for hackathon submission
+- Future enhancements: real Westend testnet integration, FIDO2 support, production security hardening

@@ -1,0 +1,153 @@
+Project: NoKey Wallet
+Purpose: A Polkadot-powered proof-of-concept wallet that eliminates seed phrases using Web2-style authentication, device-bound encryption, and social recovery to make Web3 onboarding as easy as Gmail.
+
+## Stack
+
+- Frontend: React 18.3.1 + Vite 5.4.11
+- Styling: Tailwind CSS 3.4.15
+- Animations: Framer Motion 11.11.17
+- Crypto Libraries: @polkadot/util-crypto 13.2.3, crypto-js 4.2.0
+- Icons: Lucide React 0.460.0
+- Build Tool: Vite with @vitejs/plugin-react
+
+## Runtime / Config
+
+**Environment Variables**: None required for demo (uses mock data)
+
+**Commands**:
+- `npm install` - Install dependencies
+- `npm run dev` - Start development server (http://localhost:5173)
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+
+**Configuration Files**:
+- vite.config.js - Vite configuration (React plugin, build target esnext)
+- tailwind.config.js - Custom colors (primary pink #E6007A, dark theme)
+- postcss.config.js - Tailwind & Autoprefixer
+
+## User Flow / Interactions
+
+**Main User Journey**:
+1. Landing Page → View features and value proposition
+2. Click "Create Account" → Open authentication modal
+3. Choose auth method → Face ID (simulated) or Email verification
+4. Authentication → Simulated biometric or email code entry
+5. Success → Wallet created with Polkadot address
+6. Dashboard → View balance (2-5 DOT), transactions, parachains
+7. Send Transaction → Enter recipient and amount, review, confirm
+8. Connect Parachains → Toggle connections to Acala, Moonbeam, Astar, Parallel
+9. Recovery → Email or social recovery with trusted contacts
+10. Logout → Clear wallet from device
+
+**Key Buttons/Actions**:
+- "Create Account" - Generate new wallet
+- "Send" - Initiate DOT transfer
+- "Receive" - Display wallet address
+- "Connect/Disconnect" - Toggle parachain connections
+- "Forgot device? Recover" - Open recovery modal
+- Copy address icon - Copy wallet address to clipboard
+- Logout icon - Clear wallet and return to landing
+
+## Data / Schema
+
+**Wallet Object** (localStorage: 'nokey_wallet', encrypted):
+```javascript
+{
+  address: String,        // Polkadot SS58 address (format 0)
+  publicKey: String,      // Hex-encoded public key
+  deviceKey: String,      // Hex-encoded seed (encrypted)
+  mnemonic: String        // BIP39 mnemonic (never shown to user)
+}
+```
+
+**Transaction Object** (localStorage: 'nokey_transactions', JSON array):
+```javascript
+{
+  id: Number,
+  type: 'sent' | 'received',
+  from?: String,          // For received tx
+  to?: String,            // For sent tx
+  amount: Number,         // DOT amount
+  timestamp: Number,      // Unix timestamp
+  hash: String            // Mock transaction hash
+}
+```
+
+**Parachain Data**:
+- Acala (△, #E40C5B)
+- Moonbeam (◐, #53CBC9)
+- Astar (★, #0AE2FF)
+- Parallel (◊, #FF4B8B)
+
+**Storage Keys**:
+- `nokey_wallet` - Encrypted wallet data
+- `nokey_address` - Plain wallet address
+- `nokey_balance` - Cached balance
+- `nokey_transactions` - Transaction history array
+
+## Directory
+
+```
+PolkaDotHackathon/
+├── index.html                     # HTML entry point
+├── package.json                   # Dependencies & scripts
+├── vite.config.js                 # Vite configuration
+├── tailwind.config.js             # Tailwind theming
+├── postcss.config.js              # PostCSS setup
+├── README.md                      # Documentation
+├── .gitignore                     # Git ignore rules
+├── changelog.txt                  # Project change log
+├── current.txt                    # This file
+└── src/
+    ├── main.jsx                   # React entry point
+    ├── App.jsx                    # Main app with view routing
+    ├── index.css                  # Global styles + Tailwind
+    ├── components/
+    │   ├── LandingPage.jsx        # Hero + features grid
+    │   ├── AuthenticationModal.jsx # Face ID/Email auth
+    │   ├── Dashboard.jsx          # Main wallet UI
+    │   ├── ParachainCard.jsx      # Parachain connection card
+    │   ├── SendModal.jsx          # Transaction send flow
+    │   └── RecoveryModal.jsx      # Email/social recovery
+    └── utils/
+        ├── wallet.js              # Wallet gen, encryption, storage
+        └── parachains.js          # Parachain mock data
+```
+
+## Known Limitations
+
+- **Demo Only**: Uses mock data, no real blockchain connections
+- **Security**: localStorage is not secure for production (should use secure enclave/keychain)
+- **Recovery**: Simulated only, real implementation needs threshold cryptography
+- **Transactions**: Mock transactions, not broadcast to network
+- **Balance**: Deterministic mock balance based on address
+- **Authentication**: Simulated biometric/email, not real verification
+- **Parachains**: Connection is UI state only, no actual RPC calls
+
+## Next Intended Work
+
+### Phase 1 - Real Blockchain Integration
+- [ ] Connect to Westend testnet using @polkadot/api
+- [ ] Real transaction signing and broadcasting
+- [ ] Actual balance queries from chain
+- [ ] Real parachain RPC connections
+
+### Phase 2 - Production Security
+- [ ] Replace localStorage with platform-specific secure storage
+- [ ] Implement real FIDO2/WebAuthn for biometric auth
+- [ ] True threshold cryptography for social recovery
+- [ ] Proper BIP39/BIP44 key derivation
+
+### Phase 3 - Advanced Features
+- [ ] Multi-chain support (Kusama, Substrate chains)
+- [ ] NFT display and management
+- [ ] Staking and governance participation
+- [ ] Browser extension version
+- [ ] Mobile app (React Native)
+
+### Phase 4 - SDK & Integration
+- [ ] Publish @polkadot-nokey SDK for dApp integration
+- [ ] KILT Protocol integration for verifiable credentials
+- [ ] Account abstraction smart contract wallet
+- [ ] Developer documentation and examples
