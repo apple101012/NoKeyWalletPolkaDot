@@ -118,3 +118,24 @@ PolkaDotHackathon/
 - Project is fully functional as a demo/prototype
 - Ready for hackathon submission
 - Future enhancements: real Westend testnet integration, FIDO2 support, production security hardening
+
+### 2025-11-11 (assistant) — Repository pushed to GitHub
+
+**What changed:**
+- Created the GitHub repository `apple101012/NoKeyWalletPolkaDot` and pushed the local `main` branch.
+- Updated `current.txt` to include the repository URL and latest project snapshot.
+
+**Why:**
+- User requested the project be published to their GitHub account.
+
+**Files added/edited:**
+- `changelog.txt` (this file) — appended entry
+- `current.txt` — updated to include repo URL and latest state
+
+**How to verify:**
+1. Run `git remote -v` and confirm `origin` points to `https://github.com/apple101012/NoKeyWalletPolkaDot.git`.
+2. Visit: https://github.com/apple101012/NoKeyWalletPolkaDot
+3. Confirm the `main` branch contains the project files and latest commit `chore: initial commit - NoKey Wallet MVP`.
+
+**Notes / Next:**
+- If you'd like, I can open a PR, add a release, or enable GitHub Pages for a demo site.

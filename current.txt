@@ -1,6 +1,8 @@
 Project: NoKey Wallet
 Purpose: A Polkadot-powered proof-of-concept wallet that eliminates seed phrases using Web2-style authentication, device-bound encryption, and social recovery to make Web3 onboarding as easy as Gmail.
 
+Repository: https://github.com/apple101012/NoKeyWalletPolkaDot
+
 ## Stack
 
 - Frontend: React 18.3.1 + Vite 5.4.11
